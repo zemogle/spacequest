@@ -1,0 +1,152 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="" name=description />
+  <meta content="astronomy, education, adventure, outdoors, kids, children" name=keywords />
+  <meta name=author />
+  <meta name=publisher />
+  <meta name=copyright />
+  <meta content="astronomy, education, adventure, outdoors, kids, children" name=robots />
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content=“#ffffff”>
+
+  <title>Space Quest | {% block title %}Astronomy Scavenger Hunt{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Tilt+Warp&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald|Aldrich" rel="stylesheet">
+
+  <link href="{% static "quest.css" %}" rel="stylesheet">
+  {% block extracss%}{% endblock %}
+</head>
+
+<body class="{% block mission-class %}{%endblock%}">
+  <div id="page-wrapper">
+    <header>
+      {% block menubar %}
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+        <div class="navbar-brand">
+          <div class="navbar-item"
+          <a class="brand" href="/">
+            <div class="brand-icon">
+              <img src="{% static 'SpaceQuestRocket.png' %}" alt="Space Quest rocket">
+            </div>
+            <div class="brand-content">
+              Space Quest
+            </div>
+          </a>
+          </div>
+
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="mynavbar">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="mynavbar" class="navbar-menu">
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <a class="navbar-item" href="/about/">
+                {% translate "About" %}
+              </a>
+              <a class="navbar-item" href="/things/">
+                Thing List
+              </a>
+              <a class="navbar-item" href="/quests/">
+                Find a Quest
+              </a>
+            </div>
+          </div>
+        </div>
+        </div>
+      </nav>
+      {% endblock%}
+    </header>
+
+
+    {% block main-content %}
+    <div class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            {% block herotitle %}{% endblock %}
+          </h1>
+          <h2 class="subtitle">
+            {% block subtitle %}{% endblock %}
+          </h2>
+        </div>
+      </div>
+    </div>
+    <section class="section">
+
+      <div class="container">
+        <div class="centre-container">
+          {% block main-body %}
+          {% endblock %}
+        </div>
+      </div>
+
+    </section>
+    {% endblock %}
+  </div>
+  <footer class="footer">
+    <div class="columns">
+      <div class="column is-half">
+        <div class="content is-pulled-right">
+          <figure class="image">
+            <img src="{% static 'SpaceQuest_logo.png' %}" alt="Space Quest logo" style="width:150px" />
+            <h4>Space Quest</h4>
+          </figure>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="content">
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="mailto:hello@spacequest.uk">Contact Us</a></li>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="{% static " explorer/js/auth.js" %}" type="text/javascript"></script>
+  <script src="{% static " explorer/js/lottie2.js" %}" type="text/javascript"></script>
+  <script>
+    function clear_messages() {
+      $('.messages').hide();
+      $.getJSON('/api/messages/remove/?callback=serol', function(data) {
+          console.log("DONE ");
+          $('#message-alert').html('<i class="far fa-bell"></i>')
+          $('.messages').html()
+        })
+        .fail(function(data) {
+          console.log("FAIL ", data);
+        });
+      return;
+    }
+
+    $(document).ready(function() {
+      $('#message-alert').on('click', function() {
+        $('.messages').toggle()
+      })
+      $('.delete').on('click', clear_messages)
+    });
+  </script>
+
+  {% block script-content %}
+  {% endblock %}
+</body>
+
+</html>
