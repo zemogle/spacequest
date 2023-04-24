@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% load static %}
+
+
+{% block main-content %}
+<section class="section is-hero">
+
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column">
+        <h1>Join the Quest</h1>
+        <h2 class="subtitle">
+          Learn more about space and astronomy with our astronomy themed scavenger hunt. Host your own Space Quest by downloading the picture cards.
+        </h2>
+      </div>
+      <div class="column">
+        <figure class="image">
+          <img src="{% static 'SpaceQuest_logo.png'%}" alt="Space Quest logo" />
+        </figure>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="section grey-bg is-medium">
+  <div class="container">
+  <div class="columns">
+    <div class="column is-one-third">
+      <h3 class="title is-4 is-spaced"> Quality Family Time </h3>
+      <p class="subtitle is-5">
+        Enjoy exploring space with your family
+      </p>
+    </div>
+    <div class="column is-one-third">
+      <h3 class="title is-4 is-spaced">Create Your Own Quest</h3>
+      <p class="subtitle is-5">
+      </p>
+    </div>
+    <div class="column is-one-third">
+      <h3 class="title is-4 is-spaced"> Find a Quest </h3>
+      <p class="subtitle is-5">
+      </p>
+    </div>
+  </div>
+  </div>
+</section>
+{% endblock %}

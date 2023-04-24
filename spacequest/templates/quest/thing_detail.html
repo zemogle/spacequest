@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% load static %}
+
+
+{% block herotitle %}
+{{ object.name }}
+{% endblock %}
+
+{% block subtitle %}
+{{object.teaser}}
+{% endblock %}
+
+{% block main-body %}
+
+More NAM 2023 outreach events
+<div class="buttons has-addons">
+  <a href="https://www.nam2023.org/public-engagement/astroart-origins-exhibition" class="button">AstroArt-Origins Exhibition</a>
+  <a href="https://www.nam2023.org/public-engagement/astronomy-on-tap" class="button">Astronomy on Tap</a>
+  <a href="https://www.nam2023.org/public-engagement/astro-pop-up-stall" class="button">Astro Pop-up Stall</a>
+</div>
+
+<div class="columns content">
+
+    <div class="column is-three-fifths">
+      <div class="notification green-bg rounded-corners">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-128x128">
+            <img src="{{object.illustration}}" alt="Illustration of {{object.name}}" />
+          </figure>
+        </div>
+        <div class="media-content">
+          <p>{{object.description|safe}}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="column is-two-fifths">
+      <figure class="image image-with-sticker">
+        <img src="{{object.image}}" class="rounded-corners" />
+        <caption>{{object.caption}}</caption>
+      </figure>
+    </div>
+  </div>
+{% endblock %}

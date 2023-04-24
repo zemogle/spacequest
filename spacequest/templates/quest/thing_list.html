@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block herotitle %}All the Things!{% endblock %}
+{% block subtitle %}Our name for astronomical objects{% endblock %}
+
+
+{% block main-body %}
+
+<div class="columns is-multiline">
+{% for object in object_list %}
+<div class="column is-one-quarter">
+  <div class="card">
+    <div class="card-image px-6 py-6">
+      <figure class="image is-square">
+        <img src="{{object.illustration}}" alt="Illustration of {{object.name}}">
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="content">
+        <p class="title is-4"><a href="{% url 'thing' object.slug %}">{{ object.name }}</a></p>
+        {{object.teaser}}
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -35,7 +35,7 @@
           <div class="navbar-item"
           <a class="brand" href="/">
             <div class="brand-icon">
-              <img src="{% static 'SpaceQuestRocket.png' %}" alt="Space Quest rocket">
+              <a href="/"><img src="{% static 'SpaceQuestRocket.png' %}" alt="Space Quest rocket"></a>
             </div>
             <div class="brand-content">
               Space Quest
@@ -76,7 +76,7 @@
     <div class="hero is-primary">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
+          <h1>
             {% block herotitle %}{% endblock %}
           </h1>
           <h2 class="subtitle">
@@ -99,7 +99,7 @@
   </div>
   <footer class="footer">
     <div class="columns">
-      <div class="column is-half">
+      <div class="column is-one-fifth">
         <div class="content is-pulled-right">
           <figure class="image">
             <img src="{% static 'SpaceQuest_logo.png' %}" alt="Space Quest logo" style="width:150px" />
@@ -107,43 +107,22 @@
           </figure>
         </div>
       </div>
-      <div class="column is-half">
+      <div class="column is-one-fifth">
+        <div class="content is-pulled-right">
+          <figure class="image">
+            <img src="https://www.nam2023.org/images/logos/Nam23_Logo_Basic.jpeg" alt="NAM 2023 logo" style="width:150px" />
+          </figure>
+        </div>
+      </div>
+      <div class="column">
         <div class="content">
           <ul>
             <li><a href="/about/">About</a></li>
-            <li><a href="mailto:hello@spacequest.uk">Contact Us</a></li>
+            <li><a href="mailto:quest@zemogle.net">Contact Us</a></li>
         </div>
       </div>
     </div>
   </footer>
-
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="{% static " explorer/js/auth.js" %}" type="text/javascript"></script>
-  <script src="{% static " explorer/js/lottie2.js" %}" type="text/javascript"></script>
-  <script>
-    function clear_messages() {
-      $('.messages').hide();
-      $.getJSON('/api/messages/remove/?callback=serol', function(data) {
-          console.log("DONE ");
-          $('#message-alert').html('<i class="far fa-bell"></i>')
-          $('.messages').html()
-        })
-        .fail(function(data) {
-          console.log("FAIL ", data);
-        });
-      return;
-    }
-
-    $(document).ready(function() {
-      $('#message-alert').on('click', function() {
-        $('.messages').toggle()
-      })
-      $('.delete').on('click', clear_messages)
-    });
-  </script>
 
   {% block script-content %}
   {% endblock %}
